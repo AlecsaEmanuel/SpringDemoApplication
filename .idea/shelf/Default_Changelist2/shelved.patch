@@ -1,0 +1,48 @@
+Index: src/main/java/guru/springframework/spring5webapp/bootstrap/BootStrapData.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package guru.springframework.spring5webapp.bootstrap;\n\nimport guru.springframework.spring5webapp.domain.Author;\nimport guru.springframework.spring5webapp.domain.Book;\nimport guru.springframework.spring5webapp.domain.Publisher;\nimport guru.springframework.spring5webapp.repositories.AuthorRepositiry;\nimport guru.springframework.spring5webapp.repositories.BookRepository;\nimport org.springframework.boot.CommandLineRunner;\nimport org.springframework.stereotype.Component;\n\n@Component\n\n\npublic class BootStrapData implements CommandLineRunner {\n\n    private final AuthorRepositiry authorRepositiry;\n    private final BookRepository bookRepository;\n\n    public BootStrapData(AuthorRepositiry authorRepositiry, BookRepository bookRepository) {\n        this.authorRepositiry = authorRepositiry;\n        this.bookRepository = bookRepository;\n    }\n\n    @Override\n    public void run(String... args) throws Exception {\n\n\n        Author jeremiah = new Author(\"jeremiah1\", \"jeremiah2\");\n        Book judith = new Book(\"judith1\", \"3124241241\");\n\n        jeremiah.getBooks().add(judith);\n        judith.getAuthors().add(jeremiah);\n\njudith.setPublisher(publisher);\npublisher.getBooks().add(judith);\n\n\n        authorRepositiry.save(jeremiah);\n        bookRepository.save(judith);\n\n\n\n        Author rod = new Author(\"Rod\", \"Johnson\");\n        Book noEJB = new Book(\"J2EE Development without something\",\"4142323523\");\n\n        rod.getBooks().add(noEJB);\n        noEJB.getAuthors().add(rod);\n        authorRepositiry.save(rod);\n        bookRepository.save(noEJB);\n\n\n        System.out.println(\"Started with bootstrap\");\n        System.out.println(\"Number of books \"+ bookRepository.count());\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/guru/springframework/spring5webapp/bootstrap/BootStrapData.java	(date 1581421352000)
++++ src/main/java/guru/springframework/spring5webapp/bootstrap/BootStrapData.java	(date 1581524428000)
+@@ -3,7 +3,7 @@
+ import guru.springframework.spring5webapp.domain.Author;
+ import guru.springframework.spring5webapp.domain.Book;
+ import guru.springframework.spring5webapp.domain.Publisher;
+-import guru.springframework.spring5webapp.repositories.AuthorRepositiry;
++import guru.springframework.spring5webapp.repositories.AuthorRepository;
+ import guru.springframework.spring5webapp.repositories.BookRepository;
+ import org.springframework.boot.CommandLineRunner;
+ import org.springframework.stereotype.Component;
+@@ -13,10 +13,10 @@
+ 
+ public class BootStrapData implements CommandLineRunner {
+ 
+-    private final AuthorRepositiry authorRepositiry;
++    private final AuthorRepository authorRepositiry;
+     private final BookRepository bookRepository;
+ 
+-    public BootStrapData(AuthorRepositiry authorRepositiry, BookRepository bookRepository) {
++    public BootStrapData(AuthorRepository authorRepositiry, BookRepository bookRepository) {
+         this.authorRepositiry = authorRepositiry;
+         this.bookRepository = bookRepository;
+     }
+@@ -28,11 +28,14 @@
+         Author jeremiah = new Author("jeremiah1", "jeremiah2");
+         Book judith = new Book("judith1", "3124241241");
+ 
++//        judith.setPublisher(publisher);
++//        publisher.getBooks().add(judith);
++
++
+         jeremiah.getBooks().add(judith);
+         judith.getAuthors().add(jeremiah);
+ 
+-judith.setPublisher(publisher);
+-publisher.getBooks().add(judith);
++
+ 
+ 
+         authorRepositiry.save(jeremiah);

@@ -1,0 +1,17 @@
+Index: src/main/java/guru/springframework/spring5webapp/Spring5webappApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package guru.springframework.spring5webapp;\n\nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\n\n@SpringBootApplication\npublic class Spring5webappApplication {\n\n\tpublic static void main(String[] args) {\n\t\tSpringApplication.run(Spring5webappApplication.class, args);\n\t}\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/guru/springframework/spring5webapp/Spring5webappApplication.java	(date 1581421352000)
++++ src/main/java/guru/springframework/spring5webapp/Spring5webappApplication.java	(date 1581522899000)
+@@ -9,4 +9,5 @@
+ 	public static void main(String[] args) {
+ 		SpringApplication.run(Spring5webappApplication.class, args);
+ 	}
+-}
++
++}
+\ No newline at end of file
